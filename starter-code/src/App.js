@@ -20,6 +20,16 @@ class App extends Component {
     });
   }
 
+  deleteContact(index) {
+    let newContacts = [...this.state.filteredContacts];
+
+    newContacts.splice(index, 1);
+
+    this.setState({
+      filteredContacts: newContacts
+    });
+  }
+
   sortByName() {
     let newContacts = [...this.state.filteredContacts].sort((a, b) => {
       return a.name.localeCompare(b.name);
@@ -57,6 +67,7 @@ class App extends Component {
               <th>Picture</th>
               <th>Name</th>
               <th>Popularity</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -66,6 +77,7 @@ class App extends Component {
                   <td><img src={contact.pictureUrl} alt={contact.name} /></td>
                   <td>{contact.name}</td>
                   <td>{contact.popularity.toFixed(2)}</td>
+                  <td><button onClick={() => this.deleteContact(index) }>Delete</button></td>
                 </tr>
               )
             })}
