@@ -5,6 +5,10 @@
   width: 600px;
 }
 
+table {
+  margin-top: 25px;
+}
+
 table img {
   width: 100px;
 }

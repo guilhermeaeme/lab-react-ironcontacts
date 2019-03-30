@@ -8,12 +8,27 @@ class App extends Component {
     filteredContacts: [...contacts].slice(0, 5)
   }
 
+  addRandomContact() {
+    let newContacts = [...this.state.filteredContacts];
+
+    let randomContact = [...contacts][Math.floor(Math.random() * contacts.length)];
+
+    newContacts.unshift(randomContact);
+
+    this.setState({
+      filteredContacts: newContacts
+    });
+  }
+
   render() {
     console.log(this.state.filteredContacts)
 
     return (
       <div className="App">
         <h1>IronContacts</h1>
+
+        <button onClick={() => this.addRandomContact() }>Add Random Contact</button>
+
         <table>
           <thead>
             <tr>
