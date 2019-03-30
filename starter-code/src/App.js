@@ -15,9 +15,7 @@ class App extends Component {
 
     newContacts.unshift(randomContact);
 
-    this.setState({
-      filteredContacts: newContacts
-    });
+    this.updateContacts(newContacts);
   }
 
   deleteContact(index) {
@@ -25,9 +23,7 @@ class App extends Component {
 
     newContacts.splice(index, 1);
 
-    this.setState({
-      filteredContacts: newContacts
-    });
+    this.updateContacts(newContacts);
   }
 
   sortByName() {
@@ -35,9 +31,7 @@ class App extends Component {
       return a.name.localeCompare(b.name);
     });
 
-    this.setState({
-      filteredContacts: newContacts
-    });
+    this.updateContacts(newContacts);
   }
 
   sortByPopularity() {
@@ -45,6 +39,10 @@ class App extends Component {
       return b.popularity - a.popularity;
     });
 
+    this.updateContacts(newContacts);
+  }
+
+  updateContacts(newContacts) {
     this.setState({
       filteredContacts: newContacts
     });
