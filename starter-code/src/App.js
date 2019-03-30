@@ -20,6 +20,26 @@ class App extends Component {
     });
   }
 
+  sortByName() {
+    let newContacts = [...this.state.filteredContacts].sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+
+    this.setState({
+      filteredContacts: newContacts
+    });
+  }
+
+  sortByPopularity() {
+    let newContacts = [...this.state.filteredContacts].sort((a, b) => {
+      return b.popularity - a.popularity;
+    });
+
+    this.setState({
+      filteredContacts: newContacts
+    });
+  }
+
   render() {
     console.log(this.state.filteredContacts)
 
@@ -28,6 +48,8 @@ class App extends Component {
         <h1>IronContacts</h1>
 
         <button onClick={() => this.addRandomContact() }>Add Random Contact</button>
+        <button onClick={() => this.sortByName() }>Sort by name</button>
+        <button onClick={() => this.sortByPopularity() }>Sort by popularity</button>
 
         <table>
           <thead>
