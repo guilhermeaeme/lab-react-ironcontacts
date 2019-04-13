@@ -4,8 +4,18 @@ import './App.css';
 import contacts from './contacts.json'
 
 class App extends Component {
-  state = {
-    filteredContacts: [...contacts].slice(0, 5)
+  constructor() {
+    super();
+
+    this.state = {
+      filteredContacts: []
+    }
+
+    for(let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        this.addRandomContact();
+      }, 10 * i);
+    }
   }
 
   addRandomContact() {
@@ -49,8 +59,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.filteredContacts)
-
     return (
       <div className="App">
         <h1>IronContacts</h1>
