@@ -71,7 +71,7 @@ class App extends Component {
           <tbody>
             {this.state.filteredContacts.map((contact, index) => {
               return (
-                <tr key={index}>
+                <tr key={`${contact.name}-${index}`}>
                   <td><img src={contact.pictureUrl} alt={contact.name} /></td>
                   <td>{contact.name}</td>
                   <td>{contact.popularity.toFixed(2)}</td>
